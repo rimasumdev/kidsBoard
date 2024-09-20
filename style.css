@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.bowlby-one-regular {
+  font-family: 'Bowlby One', sans-serif;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.txt-white {
+  color: white !important;
+}
+
+.animate-gradient {
+  background-size: 300%;
+  -webkit-animation: animatedgradient 6s ease infinite alternate;
+  -moz-animation: animatedgradient 6s ease infinite alternate;
+  animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rimasum Keyboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Start -->
+    <section
+      id="home-screen"
+      class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-slate-900 to-slate-700 gap-4"
+    >
+      <h1
+        class="bowlby-one-regular text-8xl bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+      >
+        KidsBoard
+      </h1>
+      <p class="text-2xl">Fast Fingers, Big Fun – A Typing Game for Kids!</p>
+      <button
+        id="btn-play"
+        onclick="play()"
+        class="btn btn-outline btn-primary mt-5 px-10 text-2xl hover:bg-gradient-to-r from-violet-600 to-indigo-600 animate-bounce hover:animate-none hover:!text-white"
+      >
+        Play
+      </button>
+    </section>
+    <!-- Playing -->
+    <section id="play-screen" class="hidden">
+      <div class="min-h-screen flex flex-col justify-center items-center gap-5">
+        <div class="w-5/12 flex justify-between text-center">
+          <p
+            class="text-2xl bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+          >
+            Life <i class="fa-solid fa-heart-circle-bolt text-red-600"></i>
+            <br /><span id="life">5</span>
+          </p>
+          <p
+            class="text-2xl bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+          >
+            Score <i class="fa-solid fa-star"></i> <br /><span id="score"
+              >0</span
+            >
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center bg-gray-800 w-5/12 h-72 border-[15px] rounded border-gray-700"
+        >
+          <div class="py-2 px-5">
+            <p
+              class="bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+            >
+              Don't Watch Keyboard While Playing!
+            </p>
+          </div>
+          <div class="flex h-full justify-center items-center">
+            <p id="current-alphabet" class="uppercase text-9xl">M</p>
+          </div>
+        </div>
+        <!-- Keyboard -->
+        <div class="text-2xl">
+          <div class="my-1 flex w-full justify-center gap-1">
+            <kbd id="q" class="kbd">q</kbd>
+            <kbd id="w" class="kbd">w</kbd>
+            <kbd id="e" class="kbd">e</kbd>
+            <kbd id="r" class="kbd">r</kbd>
+            <kbd id="t" class="kbd">t</kbd>
+            <kbd id="y" class="kbd">y</kbd>
+            <kbd id="u" class="kbd">u</kbd>
+            <kbd id="i" class="kbd">i</kbd>
+            <kbd id="o" class="kbd">o</kbd>
+            <kbd id="p" class="kbd">p</kbd>
+          </div>
+          <div class="my-1 flex w-full justify-center gap-1">
+            <kbd id="a" class="kbd">a</kbd>
+            <kbd id="s" class="kbd">s</kbd>
+            <kbd id="d" class="kbd">d</kbd>
+            <kbd id="f" class="kbd">f</kbd>
+            <kbd id="g" class="kbd">g</kbd>
+            <kbd id="h" class="kbd">h</kbd>
+            <kbd id="j" class="kbd">j</kbd>
+            <kbd id="k" class="kbd">k</kbd>
+            <kbd id="l" class="kbd">l</kbd>
+          </div>
+          <div class="my-1 flex w-full justify-center gap-1">
+            <kbd id="z" class="kbd">z</kbd>
+            <kbd id="x" class="kbd">x</kbd>
+            <kbd id="c" class="kbd">c</kbd>
+            <kbd id="v" class="kbd">v</kbd>
+            <kbd id="b" class="kbd">b</kbd>
+            <kbd id="n" class="kbd">n</kbd>
+            <kbd id="m" class="kbd">m</kbd>
+            <!-- <kbd class="kbd">/</kbd> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Score -->
+    <section id="score-screen" class="hidden">
+      <div
+        class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-slate-900 to-slate-700 gap-4"
+      >
+        <div class="w-96 text-center">
+          <p
+            class="text-2xl bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+          >
+            Score <i class="fa-solid fa-star"></i> <br /><span id="final-score"
+              >0</span
+            >
+          </p>
+        </div>
+        <div class="flex gap-5">
+          <button
+            id="btn-play"
+            onclick="play()"
+            class="btn btn-outline btn-primary mt-5 px-10 text-2xl hover:bg-gradient-to-r from-violet-600 to-indigo-600 animate-bounce hover:animate-none hover:!text-white"
+          >
+            Play Again
+          </button>
+          <button
+            id="btn-play"
+            onclick="goHome()"
+            class="btn btn-outline btn-primary mt-5 px-10 text-2xl hover:bg-gradient-to-r from-violet-600 to-indigo-600 animate-bounce hover:animate-none hover:!text-white"
+          >
+            Go Home
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Audio -->
+    <audio src="audio/keyPress.mp3" id="key-sound" type="audio/mpeg"></audio>
+    <audio src="audio/error.mp3" id="error-sound" type="audio/mpeg"></audio>
+
+    <!-- Script -->
+    <script src="main.js"></script>
+  </body>
+</html>
